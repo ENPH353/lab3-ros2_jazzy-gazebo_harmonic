@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
     <world name="lab3_ros_world">
+        <!-- Included light -->
+        <include>
+            <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
+        </include>
         
         <model name="track">
         <static>true</static>
@@ -32,13 +36,14 @@
                     </plane>
                 </geometry>
                 <material>
-                    <script>
-                        <uri>file:///home/fizzer/enph353_ws/src/lab3_ros/media/materials/scripts</uri>
-                        <uri>file:///home/fizzer/enph353_ws/src/lab3_ros/media/materials/textures</uri>
-                        <!-- <uri>file://materials/scripts</uri>
-                        <uri>file://material/textures</uri> -->
-                        <name>track</name>
-                    </script>
+                    <pbr>
+                        <metal>
+                            <albedo_map>file://monza.png</albedo_map>
+                        </metal>
+                    </pbr>
+                    <ambient>1 1 1 1</ambient>
+                    <diffuse>1 1 1 1</diffuse>
+                    <specular>1 1 1 1</specular>
                 </material>
             </visual>
         </link>

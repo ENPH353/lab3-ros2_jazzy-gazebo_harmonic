@@ -14,12 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         # Include all launch files (either .xml or .py):
         (os.path.join('share', package_name, 'launch'),
-         glob('launch/*.xml') + glob('lauch/*.py')),
-        # Include the world and model folders
-        (os.path.join('share', package_name, 'worlds'),
-         glob('worlds/*.world')),
-        (os.path.join('share', package_name, 'models', 'track'),
-         glob('models/track/*'))
+         glob('launch/*.xml') + glob('lauch/*.py'))
     ],
     scripts=['scripts/line_follow.py'],
     install_requires=['setuptools'],
