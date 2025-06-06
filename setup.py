@@ -9,12 +9,15 @@ setup(
     version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
-        ('share/ament_index/resource_index/packages', 
-         ['resource/' + package_name]),
+        # Create an empty folder as a marker in the install/share/ folder so that 
+        # the ROS environment registers the package
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         # Include all launch files (either .xml or .py):
-        (os.path.join('share', package_name, 'launch'),
-         glob('launch/*.xml') + glob('lauch/*.py'))
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.xml') + glob('lauch/*.py')),
+        # Include all files related to world, models, urdf to the sahred folder:
+        (os.path.join('share', package_name, 'models/track'), glob('models/track/*')),
+        (os.path.join('share', package_name, 'worlds'), glob('worlds/*'))
     ],
     scripts=['scripts/line_follow.py'],
     install_requires=['setuptools'],
