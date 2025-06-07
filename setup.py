@@ -15,9 +15,12 @@ setup(
         ('share/' + package_name, ['package.xml']),
         # Include all launch files (either .xml or .py):
         (os.path.join('share', package_name, 'launch'), glob('launch/*.xml') + glob('lauch/*.py')),
-        # Include all files related to world, models, urdf to the sahred folder:
+        # Include all files related to world, models, urdf to the shared folder:
         (os.path.join('share', package_name, 'models/track'), glob('models/track/*')),
-        (os.path.join('share', package_name, 'worlds'), glob('worlds/*'))
+        (os.path.join('share', package_name, 'worlds'), glob('worlds/*')),
+        (os.path.join('share', package_name, 'urdf'), glob('urdf/*')),
+        # Include all config files
+        (os.path.join('share', package_name, 'config'), glob('config/*'))
     ],
     scripts=['scripts/line_follow.py'],
     install_requires=['setuptools'],

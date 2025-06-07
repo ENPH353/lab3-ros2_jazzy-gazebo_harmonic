@@ -1,14 +1,61 @@
 <?xml version="1.0"?>
 <sdf version="1.7">
     <world name="lab3_ros_world">
+        <physics name="lms" type="ignored">
+            <max_step_size>0.001</max_step_size>
+            <real_time_factor>1</real_time_factor>
+        </physics>
+
+        <!--Normally these plugins are included by default but if we include 
+        custom plugins (i.e. our sensor plugins) we need to include these
+        plugins explicitly-->
+        <plugin 
+            filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics">
+        </plugin>
+        <plugin
+            filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands">
+        </plugin>
+        <plugin
+            filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster">
+        </plugin>
+        <plugin
+            filename="gz-sim-contact-system"
+            name="gz::sim::systems::Contact"> 
+        </plugin>
+
+        <render_engine>ogre2</render_engine>
+        
+        <!-- Our custom plugin -->
+        <plugin
+            filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
+        </plugin>
+
         <!-- Included light -->
-        <include>
+        <!-- <include>
             <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
-        </include>
+        </include> -->
         
         <include>
             <uri>model://track</uri>
         </include>
+
+        <light type="directional" name="sol">
+            <cast_shadows>false</cast_shadows>
+            <pose>0 0 10 0 0 0</pose>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+            <attenuation>
+                <range>1000</range>
+                <constant>0.9</constant>
+                <linear>0.01</linear>
+                <quadratic>0.001</quadratic>
+            </attenuation>
+            <direction>-0.5 0.1 -0.9</direction>
+        </light>
 
         <!-- <gui>
             <camera name="user_camera">

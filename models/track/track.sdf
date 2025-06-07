@@ -35,9 +35,9 @@
                             <albedo_map>monza.png</albedo_map>
                         </metal>
                     </pbr>
-                    <ambient>1 1 1 1</ambient>
+                    <ambient>0.8 0.8 0.8 1</ambient>
                     <diffuse>1 1 1 1</diffuse>
-                    <specular>1 1 1 1</specular>
+                    <specular>0 0 0 1</specular>
                 </material>
             </visual>
         </link>
