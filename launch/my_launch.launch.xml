@@ -24,10 +24,11 @@
 
     <!-- Add the gazebo bridge parameters -->
      <node name="ROS_GZ_config_bridge" pkg="ros_gz_bridge" exec="parameter_bridge"
-        args="--ros-args -p -config_file=$(find-pkg-share lab3_ros)/config/gz_bridge.yaml"
+        args="--ros-args -p config_file:=$(find-pkg-share lab3_ros)/config/gz_bridge.yaml"
+        output="screen"
      />
 
      <node name="ROS_GZ_image_bridge" pkg="ros_gz_image" exec="image_bridge"
-        args="/camera/image_raw"   
+        args="/camera/image_raw" output="screen"
      />
 </launch>
